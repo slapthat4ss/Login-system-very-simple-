@@ -1,0 +1,53 @@
+# Create An Account System
+# Inputs
+
+username = ""
+password = ""
+confirm_password = ""
+year_of_birth = ""
+y_or_n = ""
+email = ""
+you_answer = ""
+
+print("Hello")
+y_or_n = input("Hello New User, Create a new account? Type Y/N: ")
+if y_or_n == "y":
+
+        username = (input("Username: "))
+        password = (input("Password: "))
+        if len(password) >= 8:
+            password = (input("Maximum 8 charecters , Password: "))
+        else:
+            confirm_password = (input("Confirm Password: "))
+
+        if confirm_password != password:
+            confirm_password = (input("Password not Match! , Confirm Password: "))
+        else:
+                file = open("account.txt", "w")
+                file.write("\n" + username+":"+confirm_password)
+                file.close()
+
+        year_of_birth = float(input("Year of Birth: "))
+        if year_of_birth >= 2001:
+            year_answer = input("You Are Not Above 18, Sorry!")
+
+        email = input("E-mail: ")
+        email_file = open("email.txt", "a")
+        email_file.write("\n " + email)
+        email_file.close()
+
+        print("Congratulations your account has been created, Please verify you email")
+
+elif y_or_n == "n":
+    while True:
+        login1 = input("Username: ")
+        login2 = input("Password: ")
+        file = open("account.txt", "r")
+        data = file.readline()
+        file.close()
+        if data == login1 + "," + login2:
+            print("Welcome")
+        else:
+            print("Incorrect username or password.")
+            
+print(input())
